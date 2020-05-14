@@ -1,0 +1,27 @@
+.product-page {
+    &__cart {
+        display: flex;
+        flex-wrap: wrap;
+        &-title {
+            width: 100%;
+            h2 {
+                text-align: center;
+            }
+        }
+        &-item-rigth {
+            width: 30%;
+        }
+        &-item-left {
+            width: 50%;
+        }
+        &-price {
+            text-align: center;
+        }
+        &-img {
+            max-width: 100%;
+        }
+    }
+    &__btn-back {
+        text-align: right;
+    }
+}

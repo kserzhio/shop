@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { FbResponse } from './interfaces';
+import { FbResponse, Product } from './interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +28,19 @@ export class ProductService {
           id: key,
           date: new Date(res[key].date),
         }));
+      })
+    );
+  }
+  getById(id) {
+    console.log(id);
+    return this.http.get(`${environment.fbDbUrl}/products/${id}.json`).pipe(
+      map((res: Product) => {
+        console.log(res);
+        return {
+          ...res,
+          id,
+          date: new Date(res.date),
+        };
       })
     );
   }

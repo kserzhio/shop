@@ -5,31 +5,38 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 
-
-
 const routes: Routes = [
   {
-    path: '', component: MainLayoutComponent, children: [
+    path: '',
+    component: MainLayoutComponent,
+    children: [
       {
-        path:'', redirectTo:'/', pathMatch: 'full'
+        path: '',
+        redirectTo: '/',
+        pathMatch: 'full',
       },
       {
-        path:'',component: MainPageComponent
+        path: '',
+        component: MainPageComponent,
       },
       {
-        path:'product/:id',component: ProductPageComponent
+        path: 'product/:id',
+        component: ProductPageComponent,
       },
       {
-        path:'cart',component: CartPageComponent
-      }
-    ]
+        path: 'cart',
+        component: CartPageComponent,
+      },
+    ],
   },
   {
-    path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  }
-]
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,1 +1,27 @@
-<p>product-page works!</p>
+<div *ngIf="product$ | async as product; else loading">
+    <div class="product-page">
+        <div class="product-page__btn-back">
+            <button routerLink="/" class="btn btn-dark">Back</button>
+        </div>
+        <div class="product-page__cart">
+            <div class="product-page__cart-item-rigth">
+                <div class="product-page__cart-title">
+                    <h2>{{product.title}}</h2>
+                </div>
+                <div class="product-page__cart-img">
+                    <quill-view-html [content]="product.photo"></quill-view-html>
+                </div>
+                <div class="product-page__cart-price">
+                    <h2>
+                        Price: {{product.price}}
+                    </h2>
+                    <button class="btn btn-dark" [routerLink]="['/cart']">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-page__cart-item-left">
+                <h2>Information:</h2>
+                <quill-view-html [content]="product.info"></quill-view-html>
+            </div>
+        </div>
+    </div>
+</div>
