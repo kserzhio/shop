@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
   create(product) {
     return this.http.post(`${environment.fbDbUrl}/products.json`, product).pipe(
-      map ((res: FbResponse) => {
+      map((res: FbResponse) => {
         return {
           ...product,
           id: res.name,
