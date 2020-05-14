@@ -10,6 +10,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(User) {
+    console.log(User);
     return this.http
       .post(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,
@@ -19,6 +20,7 @@ export class AuthService {
   }
 
   private setToken(response) {
+    console.log(response);
     if (response) {
       const expData = new Date(
         new Date().getTime() + +response.expiresIn * 1000

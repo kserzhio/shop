@@ -18,15 +18,16 @@ export class AuthInterceptor implements HttpInterceptor {
           auth: this.auth.token,
         },
       });
-      return next.handle(req).pipe(
-        catchError((error) => {
-          if (error.status === 401) {
-            this.auth.logout();
-            this.router.navigate(['/admin', 'login']);
-          }
-          return throwError(error);
-        })
-      );
     }
+
+    return next.handle(req).pipe(
+      catchError((error) => {
+        if (error.status === 401) {
+          this.auth.logout();
+          this.router.navigate(['/admin', 'login']);
+        }
+        return throwError(error);
+      })
+    );
   }
 }
